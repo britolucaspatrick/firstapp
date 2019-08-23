@@ -1,3 +1,4 @@
+import 'package:firstapp/tela.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -88,10 +89,18 @@ class _MyHomePageState extends State<MyHomePage> {
             new ListTile(
               title: new Text("Menu 2"),
               trailing: new Icon(Icons.account_circle),
+              onTap: ()  {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => 
+                Tela()));
+              },
             ), 
             new ListTile(
               title: new Text("Menu 3"),
               trailing: new Icon(Icons.add_box),
+              onLongPress: ()  {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => 
+                Tela()));
+              },
             )
           ],
         ),    
