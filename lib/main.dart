@@ -1,3 +1,4 @@
+import 'package:firstapp/calculo.dart';
 import 'package:firstapp/tela.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
               trailing: new Icon(Icons.add_alert),
             ), 
             new ListTile(
-              title: new Text("Menu 2"),
+              title: new Text("Formulário"),
               trailing: new Icon(Icons.account_circle),
               onTap: ()  {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => 
@@ -95,11 +96,11 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ), 
             new ListTile(
-              title: new Text("Menu 3"),
+              title: new Text("Cálculo"),
               trailing: new Icon(Icons.add_box),
               onLongPress: ()  {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => 
-                Tela()));
+                Calculo()));
               },
             )
           ],

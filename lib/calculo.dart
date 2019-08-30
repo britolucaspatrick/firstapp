@@ -1,15 +1,18 @@
+import 'package:firstapp/alert.dart';
 import 'package:flutter/material.dart';
 
-class Tela extends StatelessWidget {
+class Calculo extends StatelessWidget {
 
   GlobalKey<FormState> _key = new GlobalKey();
   bool validate = false;
+  final campo1 = new TextEditingController();
+  final campo2 = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Segunda Tela"),
+        title: Text("Cálculo Tela"),
       ),
       body: new SingleChildScrollView(
         child: new Container(
@@ -28,25 +31,22 @@ class Tela extends StatelessWidget {
     return new Column(
       children: <Widget>[
         new TextFormField(
-          decoration: new InputDecoration(hintText: 'Nome'),
-          maxLength: 50,
+          decoration: new InputDecoration(hintText: 'Campo 1'),
+          maxLength: 10,
+          keyboardType: TextInputType.number,
           validator: validateField,
+          controller: campo1,
         ), 
         new TextFormField(
-          decoration: new InputDecoration(hintText: 'Email'),
-          keyboardType: TextInputType.emailAddress,
-          maxLength: 70,
+          decoration: new InputDecoration(hintText: 'Campo 2'),
+          keyboardType: TextInputType.number,
+          maxLength: 10,
           validator: validateField,
-        ), 
-        new TextFormField(
-          decoration: new InputDecoration(hintText: 'Telefone'),
-          keyboardType: TextInputType.phone,
-          maxLength: 15,
-          validator: validatePhone,
+          controller: campo2,
         ), 
         new RaisedButton(
-          onPressed: () {sendFormulario(); },
-          child: Text('Enviar'),
+          onPressed: () {calcular(context); },
+          child: Text('Calcular'),
         ),
         new RaisedButton(
           onPressed: () {Navigator.pop(context); },
@@ -56,12 +56,6 @@ class Tela extends StatelessWidget {
     );
   }
 
-  void sendFormulario() {
-    if (_key.currentState.validate()){
-      
-    }
-  }
-
   String validateField(String value){
     if (value.length == 0){
       return "Informe campo!";
@@ -69,17 +63,12 @@ class Tela extends StatelessWidget {
     return null;
   }
 
-  String validatePhone(String value) {
-    String patttern = r'(^[0-9]*$)';
-    RegExp regExp = new RegExp(patttern);
-    if (value.length == 0) {
-      return "Informe o Campo";
-    } else if(value.length != 10){
-      return "O celular deve ter 10 dígitos";
-    }else if (!regExp.hasMatch(value)) {
-      return "O número do celular deve conter apenas dígitos";
+  void calcular(BuildContext context) {
+    if (_key.currentState.validate()){
+      double result = double.parse(campo1.text) * 
+      double.parse(campo1.text);
+      new Alert().showAlertDialog(context, "Resultado "+result.toString());
     }
-    return null;
   }
-  
+
 }
