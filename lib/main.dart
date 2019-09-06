@@ -1,4 +1,5 @@
 import 'package:firstapp/calculo.dart';
+import 'package:firstapp/contatosget.dart';
 import 'package:firstapp/tela.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -101,6 +102,14 @@ class _MyHomePageState extends State<MyHomePage> {
               onLongPress: ()  {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => 
                 Calculo()));
+              },
+            ), 
+            new ListTile(
+              title: new Text("GET Contact"),
+              trailing: new Icon(Icons.add_box),
+              onTap: ()  {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => 
+                ContatoGet()));
               },
             )
           ],
